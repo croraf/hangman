@@ -11,7 +11,7 @@ class HangmanRow extends React.Component {
         return (
             <div style={{
                 height: '80%',
-                marginTop: '5%',
+                marginTop: '71px',
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-between'

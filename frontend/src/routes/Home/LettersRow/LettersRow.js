@@ -13,20 +13,27 @@ class LettersRow extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'center'
             }}>
-                {guessedText.map(letter => {
+                {guessedText.map((letter, index) => {
+
+                    const opacity = letter === undefined ? 0.3 : 0.98;
+
                     return (
                         <div className='lettersRowLetter'
-                            key={letter}
+                            key={index}
                             style={{
-                                height: '70%',
-                                width: '7%',
-                                borderRadius: '5%',
-                                backgroundColor: '#666',
+                                height: '140px',
+                                width: '125px',
+                                borderRadius: '10px',
+                                backgroundColor: '#50525a',
+                                opacity: opacity,
                                 color: 'white',
-                                fontSize: '40px',
-                                fontWeight: 'bold',
-                                marginLeft: '0.5%',
-                                marginRight: '0.5%',
+                                fontFamily: 'Aller Display',
+                                fontSize: '76px',
+                                fontWeight: '400',
+                                lineHeight: '41.02px',
+                                textTransform: 'uppercase',
+                                marginLeft: '5px',
+                                marginRight: '5px',
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',

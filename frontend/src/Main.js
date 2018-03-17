@@ -1,23 +1,13 @@
 import React from 'react';
 
 import { Route } from 'react-router-dom';
-import { Home } from './routes/Home/Home';
+import { HomeContainer } from './routes/Home/HomeContainer';
 
 import { withTheme } from 'material-ui/styles';
 
 import Paper from 'material-ui/Paper';
 
 class Main extends React.Component {
-
-    componentDidMount() {
-        
-        console.log('mounted');
-        const body = document.getElementsByTagName('body')[0];
-
-        body.addEventListener('keypress', (event) => {
-            console.log(event.key);
-        });
-    }
 
 
     render() {
@@ -34,12 +24,11 @@ class Main extends React.Component {
                     minHeight: '980px',
                     overflowY: 'auto',
                     overflowX: 'hidden',
-                    backgroundColor: '#225',
-                    border: '2px solid white',
+                    backgroundColor: '#373d5c',
                     display: 'flex'
                 }}>
                 {/* <Route exact path="/" component={Home} /> */}
-                <Home />
+                <HomeContainer />
             </Paper>
         );
     }
