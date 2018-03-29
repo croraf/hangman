@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "css-loader": "^0.28.9",
+    "file-loader": "^1.1.6",
     "history": "^4.7.2",
     "material-ui": "^1.0.0-beta.23",
     "material-ui-icons": "^1.0.0-beta.17",
@@ -24,8 +25,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "style-loader": "^0.20.1",
-    "file-loader": "^1.1.6"
+    "style-loader": "^0.20.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -36,6 +36,7 @@
     "eslint": "^4.13.1",
     "eslint-plugin-react": "^7.5.1",
     "redux-devtools": "^3.4.1",
+    "resolve-url-loader": "^2.3.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"
   }
