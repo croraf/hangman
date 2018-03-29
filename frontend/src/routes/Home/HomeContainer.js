@@ -6,8 +6,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    newGuessHandler: (event) => {dispatch({type: 'newGuess', guess: event.key});},
-    newWordHandler: (newWord) => {dispatch({type: 'newWord', newWord});}
+    newGuessHandler: (event) => {dispatch({type: 'newGuess', guess: event.key.toUpperCase()});},
+    newWordHandler: (newWord) => {dispatch({type: 'newWord', newWord: newWord.toUpperCase()});}
 });
 
 const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);

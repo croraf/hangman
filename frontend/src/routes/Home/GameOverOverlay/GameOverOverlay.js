@@ -5,7 +5,7 @@ import {NewWorld} from './NewWorld';
 class GameOverOverlay extends React.Component {
     render() {
 
-        const {newWorldHandler, isGameOver} = this.props;
+        const {newWorldHandler, gameState} = this.props;
 
         const GameOverComponent = (
             <div style={{
@@ -38,7 +38,7 @@ class GameOverOverlay extends React.Component {
         );
 
         return (
-            isGameOver ? GameOverComponent : <div />
+            gameState === 'GAME_STATE_OVER' ? GameOverComponent : <div />
         );
     }
 }

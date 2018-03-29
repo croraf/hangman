@@ -13,7 +13,7 @@ class Home extends React.Component {
 
     componentDidMount() {
         
-        console.log('mounted');
+        console.log('Home component mounted');
         const body = document.getElementsByTagName('body')[0];
 
         fetch(

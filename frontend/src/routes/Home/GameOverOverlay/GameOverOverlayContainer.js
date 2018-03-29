@@ -3,11 +3,14 @@ import {connect} from 'react-redux';
 import {GameOverOverlay} from './GameOverOverlay';
 
 const mapStateToProps = (state) => ({
-    isGameOver: state.guesses.isGameOver
+    gameState: state.guesses.gameState
 });
 
-const mapDispatchToProps = () => ({
-    newWorldHandler: () => {console.log('new world selected');}
+const mapDispatchToProps = (dispatch) => ({
+    newWorldHandler: () => {
+        console.log('new world selected');
+        dispatch({type: 'newWord', newWord: 'metuzalem'.toUpperCase()});
+    }
 });
 
 const GameOverOverlayContainer = connect(mapStateToProps, mapDispatchToProps)(GameOverOverlay);
