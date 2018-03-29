@@ -51,7 +51,14 @@ const guessesReducer = (state = {textToGuess: [], lettersRowText: [], missedGues
                 return state;
             }
 
-            console.log('new guess:', action.guess);
+            console.log('new guess:', action.guess, action.guess.length);
+
+            if (!action.guess.match(/^[A-Z]$/)) {
+
+                console.log('NOT AN ALPHABET LETTER');
+                return state;
+
+            }
 
             if (state.lettersRowText.includes(action.guess) || state.missedGuesses.includes(action.guess)) {
                 
