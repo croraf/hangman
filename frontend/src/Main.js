@@ -13,7 +13,7 @@ class Main extends React.Component {
     render() {
 
         return (
-            <Paper elevation={4} 
+            <Paper elevation={0} 
                 style={{
                     position: 'absolute',
                     bottom: '0%',

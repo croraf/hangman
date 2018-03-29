@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {NewWorld} from './NewWorld';
+import {NewWord} from './NewWord';
 
 class GameOverOverlay extends React.Component {
     render() {
 
-        const {newWorldHandler, gameState} = this.props;
+        const {newWordHandler, gameState} = this.props;
 
         const GameOverComponent = (
             <div style={{
@@ -33,7 +33,7 @@ class GameOverOverlay extends React.Component {
                     GAME OVER
                 </div>
 
-                <NewWorld newWorldHandler={newWorldHandler} />
+                <NewWord newWordHandler={newWordHandler} />
             </div>
         );
 

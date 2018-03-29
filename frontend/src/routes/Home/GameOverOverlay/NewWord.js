@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class NewWorld extends React.Component {
+class NewWord extends React.Component {
     render() {
         return (
             <div 
@@ -17,7 +17,7 @@ class NewWorld extends React.Component {
                     marginTop: '50px',
                     cursor: 'pointer',
                 }}
-                onClick={this.props.newWorldHandler}
+                onClick={this.props.newWordHandler}
             >
                 <div style={{
                     color: '#ffba00',
@@ -27,11 +27,11 @@ class NewWorld extends React.Component {
                     lineHeight: '41.02px',
                     textTransform: 'uppercase'
                 }}>
-                    New world
+                    New word
                 </div>
             </div>
         );
     }
 }
 
-export {NewWorld};
+export {NewWord};

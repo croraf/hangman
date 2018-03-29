@@ -1,5 +1,13 @@
 
 
+body{
+  background-color: #373d5c;
+  -moz-transform:  scale(0.6,0.6);
+  -moz-transform-origin: left;
+  margin-left: calc((100% - 972px)/2);
+  zoom: 60%;
+}
+
 @font-face {
     font-family: 'Aller Display';
     src: url('./fonts/AllerDisplay.eot') format('eot'),

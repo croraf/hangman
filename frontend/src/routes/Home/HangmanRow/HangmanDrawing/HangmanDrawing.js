@@ -12,9 +12,7 @@ class HangmanDrawing extends React.Component {
         const j = Math.floor(countOfMissed / 6) + 1;
         const i = countOfMissed % 6 + 1;
 
-        console.log(i, j);
-
-        console.log(i, j);
+        console.log('part of "hangman flow" image taken (i, j):', i, j);
 
         return (
             <div 

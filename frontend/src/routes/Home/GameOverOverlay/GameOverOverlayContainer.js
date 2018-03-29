@@ -9,8 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    newWorldHandler: () => {
-        console.log('new world selected');
+    newWordHandler: () => {
+        console.log('new word selected');
         dispatch(fetchNewWordAndDispatchNewWordAction());
     }
 });
