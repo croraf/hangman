@@ -18,3 +18,4 @@ Required: node v8.9.1 or greater, npm v5.5.1 or greater.
 
     1. Hangman drawing a bit out of scale.
     2. Zoom issue in Firefox. Used scale but doesn't work exactly as expected. Compare to Opera or Chrome.
+    3. It can (very rarely) happen that the word to guess contains non-standard-English letter (for example with accent). As input is constrained to English standard alphabet it is impossible to guess such words completly.
