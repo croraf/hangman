@@ -1,25 +1,20 @@
-# About "maptopath" application
+# About "hangman" application
 
-Small app that converts 2-D map inputted to 1-D path starting at '@' and ending at 'x'.
+Classical hangman game.
 
-Deployed at: https://vrafaeli.000webhostapp.com/#/
 
 # How to use
 
 Required: node v8.9.1 or greater, npm v5.5.1 or greater.
 
     1. From 'frontend' folder run "npm install".
-
-    2a. From 'frontend' folder run "npm run compile". 
-    Required production files are 'index.html' and 'frontend/dist/bundle.js'. 
-    Open '<full-path-to>/index.html' in browser.
     
-    2b. Alternatively you can also run in development mode by running "npm run dev" from 'frontend' folder. 
-    Open 'localhost:9002' in browser
+    2. To run in development mode by use "npm run dev" from 'frontend' folder. 
+    
+    3. App is available at 'localhost:9002'.
 
 
 # TODO (issues)
 
-    1. Scrolling interferes with calculation thread
-    2. Maybe stop solving if path is ambiguous (easy fix)
-    3. Current position highlight is not aligned with map when map is scrolled
+    1. Hangman drawing a bit out of scale.
+    2. Zoom issue in Firefox. Used scale but doesn't work exactly as expected. Compare to Opera or Chrome.
