@@ -1,15 +1,25 @@
+/**
+ * The only module that manages all game actions and state. 
+ * If the application gets bigger the file will be broken acording to application's domains.
+ */
 
-// const guessedText = [undefined, undefined, undefined, undefined, 'H', 'A', '', '', '', 'A', ''];
+
+// static examples
+// const lettersRowText = [undefined, undefined, undefined, undefined, 'H', 'A', '', '', '', 'A', ''];
 // const missedGuesses = ['B', 'D', 'E', 'Z', 'P', 'U', 'K', 'L', 'Q', 'W' /* */];
 
 
-
+/**
+ * Game state constants
+ */
 const GAME_STATE_OVER = 'GAME_STATE_OVER';
 const GAME_STATE_ON = 'GAME_STATE_ON';
 const GAME_STATE_INITIALIZING = 'GAME_STATE_INITIALIZING';
 
 
-
+/**
+ * Async action creator. Dispatch start of fetching for new word. Fetches, and on success dispatches start new game action.
+ */
 const fetchNewWordAndDispatchNewWordAction = () => dispatch  => {
 
     dispatch({type: 'newWordFetching'});
@@ -31,7 +41,7 @@ const fetchNewWordAndDispatchNewWordAction = () => dispatch  => {
     );
 };
 
-const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses: [], gameState: GAME_STATE_INITIALIZING}, action) => {
+const guessesReducer = (state = {textToGuess: [], lettersRowText: [], missedGuesses: [], gameState: GAME_STATE_INITIALIZING}, action) => {
     switch (action.type) {
         case 'newGuess':
 
@@ -43,7 +53,7 @@ const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses
 
             console.log('new guess:', action.guess);
 
-            if (state.guessedText.includes(action.guess) || state.missedGuesses.includes(action.guess)) {
+            if (state.lettersRowText.includes(action.guess) || state.missedGuesses.includes(action.guess)) {
                 
                 console.log('ALREADY TRIED');
                 return state;
@@ -52,17 +62,17 @@ const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses
 
                 console.log('GUESS');
 
-                const newGuessedText = [...state.guessedText];
+                const newLettersRowText = [...state.lettersRowText];
 
                 for (let i = 0; i < state.textToGuess.length; i++) {
                     if (state.textToGuess[i] === action.guess) {
-                        newGuessedText[11 - state.textToGuess.length + i] = action.guess;
+                        newLettersRowText[11 - state.textToGuess.length + i] = action.guess;
                     }
                 }
 
-                const gameState = newGuessedText.includes('') ? GAME_STATE_ON : GAME_STATE_OVER;
+                const gameState = newLettersRowText.includes('') ? GAME_STATE_ON : GAME_STATE_OVER;
 
-                return Object.assign({}, state, {guessedText: newGuessedText, gameState});
+                return Object.assign({}, state, {lettersRowText: newLettersRowText, gameState});
 
             } else {
 
@@ -81,36 +91,24 @@ const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses
             // Fill hidden text on screen with undefined and ''.
             // undefined is used for light-gray not needed boxes,
             // and '' for not guessable dark-gray boxes
-            const guessedText = 
+            const lettersRowText = 
                 Array(11-textToGuess.length).fill(undefined)
                     .concat(Array(textToGuess.length).fill(''));
                 
             console.log('text to guess:', textToGuess);
 
             return Object.assign({}, state, {
-                guessedText,
+                lettersRowText,
                 textToGuess,
                 missedGuesses: [],
                 gameState: GAME_STATE_ON});
 
         case 'newWordFetching':
-            return Object.assign({}, state, {gameState: GAME_STATE_INITIALIZING, missedGuesses: [], guessedText: []});
+            return Object.assign({}, state, {gameState: GAME_STATE_INITIALIZING, missedGuesses: [], lettersRowText: []});
 
         default:
             return state;
     }
 };
-
-/* const missedGuesses = (state = 'idle', action) => {
-
-    switch (action.type) {
-        case 'solvingStarted':
-            return 'solving';
-        case 'solvingStopped':
-            return 'idle';
-        default:
-            return state;
-    }
-}; */
 
 export { guessesReducer, fetchNewWordAndDispatchNewWordAction };

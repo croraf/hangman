@@ -4,7 +4,7 @@ import React from 'react';
 class LettersRow extends React.Component {
     render() {
 
-        const {guessedText} = this.props; 
+        const {lettersRowText} = this.props; 
 
         return (
             <div style={{
@@ -13,7 +13,7 @@ class LettersRow extends React.Component {
                 flexDirection: 'row',
                 justifyContent: 'center'
             }}>
-                {guessedText.map((letter, index) => {
+                {lettersRowText.map((letter, index) => {
 
                     const opacity = letter === undefined ? 0.3 : 0.98;
 

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import {GameOverOverlay} from './GameOverOverlay';
 
-import {fetchNewWordAndDispatchNewWordAction} from '../../../redux/reducers';
+import {fetchNewWordAndDispatchNewWordAction} from '../../../modules/guesses';
 
 const mapStateToProps = (state) => ({
     gameState: state.guesses.gameState

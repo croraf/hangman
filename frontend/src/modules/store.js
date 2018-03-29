@@ -3,9 +3,9 @@ import { createStore } from 'redux';
 
 import reduxThunk from 'redux-thunk';
 
-import { combineReducers, applyMiddleware, compose } from 'redux'
+import { combineReducers, applyMiddleware, compose } from 'redux';
 
-import { guessesReducer } from './reducers';
+import { guessesReducer } from './guesses';
 import { routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 

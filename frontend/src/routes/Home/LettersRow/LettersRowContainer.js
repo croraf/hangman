@@ -5,7 +5,7 @@ import {LettersRow} from './LettersRow';
 const mapStateToProps = (state) => {
     
     return ({
-        guessedText: state.guesses.guessedText
+        lettersRowText: state.guesses.lettersRowText
     });
 };
 

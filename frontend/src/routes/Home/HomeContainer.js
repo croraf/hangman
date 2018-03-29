@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import {Home} from './Home';
 
-import {fetchNewWordAndDispatchNewWordAction} from '../../redux/reducers';
+import {fetchNewWordAndDispatchNewWordAction} from '../../modules/guesses';
 
 const mapStateToProps = (state) => ({
 });
