@@ -1,6 +1,7 @@
 
 import { createStore } from 'redux';
 
+import reduxThunk from 'redux-thunk';
 
 import { combineReducers, applyMiddleware, compose } from 'redux'
 
@@ -22,7 +23,7 @@ const reducer = combineReducers({
 const store = createStore(
     reducer,
     composeEnhancers(
-        applyMiddleware(routerMiddleware(history))
+        applyMiddleware(reduxThunk, routerMiddleware(history))
     )
 );
 

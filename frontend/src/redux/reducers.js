@@ -2,9 +2,34 @@
 // const guessedText = [undefined, undefined, undefined, undefined, 'H', 'A', '', '', '', 'A', ''];
 // const missedGuesses = ['B', 'D', 'E', 'Z', 'P', 'U', 'K', 'L', 'Q', 'W' /* */];
 
+
+
 const GAME_STATE_OVER = 'GAME_STATE_OVER';
 const GAME_STATE_ON = 'GAME_STATE_ON';
 const GAME_STATE_INITIALIZING = 'GAME_STATE_INITIALIZING';
+
+
+
+const fetchNewWordAndDispatchNewWordAction = () => dispatch  => {
+
+    dispatch({type: 'newWordFetching'});
+
+    return (
+        
+        fetch(
+            'http://api.wordnik.com:80/v4/words.json/randomWords?' + 
+            'hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&' +
+            'minLength=5&maxLength=11&limit=1' + 
+            '&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5'
+        )
+            .then(response => response.json())
+            .then(randomWords => {
+        
+                dispatch({type: 'newWordReceived', newWord: randomWords[0].word.toUpperCase()});
+                
+            })
+    );
+};
 
 const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses: [], gameState: GAME_STATE_INITIALIZING}, action) => {
     switch (action.type) {
@@ -49,7 +74,7 @@ const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses
             
             }
 
-        case 'newWord':
+        case 'newWordReceived':
 
             const textToGuess = action.newWord.split('');
 
@@ -67,6 +92,10 @@ const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses
                 textToGuess,
                 missedGuesses: [],
                 gameState: GAME_STATE_ON});
+
+        case 'newWordFetching':
+            return Object.assign({}, state, {gameState: GAME_STATE_INITIALIZING, missedGuesses: [], guessedText: []});
+
         default:
             return state;
     }
@@ -84,4 +113,4 @@ const guessesReducer = (state = {textToGuess: [], guessedText: [], missedGuesses
     }
 }; */
 
-export { guessesReducer };
+export { guessesReducer, fetchNewWordAndDispatchNewWordAction };

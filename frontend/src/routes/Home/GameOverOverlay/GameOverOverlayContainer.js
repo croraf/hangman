@@ -2,6 +2,8 @@ import {connect} from 'react-redux';
 
 import {GameOverOverlay} from './GameOverOverlay';
 
+import {fetchNewWordAndDispatchNewWordAction} from '../../../redux/reducers';
+
 const mapStateToProps = (state) => ({
     gameState: state.guesses.gameState
 });
@@ -9,7 +11,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     newWorldHandler: () => {
         console.log('new world selected');
-        dispatch({type: 'newWord', newWord: 'metuzalem'.toUpperCase()});
+        dispatch(fetchNewWordAndDispatchNewWordAction());
     }
 });
 

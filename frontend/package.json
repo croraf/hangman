@@ -23,7 +23,9 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
-    "style-loader": "^0.20.1"
+    "redux-thunk": "^2.2.0",
+    "style-loader": "^0.20.1",
+    "file-loader": "^1.1.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -33,7 +35,6 @@
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.13.1",
     "eslint-plugin-react": "^7.5.1",
-    "file-loader": "^1.1.6",
     "redux-devtools": "^3.4.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7"

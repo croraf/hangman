@@ -12,8 +12,7 @@ class MissedGuesses extends React.Component {
                     fontSize: '32px',
                     fontWeight: '400',
                     lineHeight: '41.02px',
-                    textTransform: 'uppercase',
-                    marginBottom: '35px'
+                    textTransform: 'uppercase'
                 }}>
                     YOU MISSED:
                 </div>
@@ -23,9 +22,10 @@ class MissedGuesses extends React.Component {
                     fontFamily: 'Aller Display',
                     fontSize: '92px',
                     fontWeight: '400',
-                    lineHeight: '41.02px',
+                    lineHeight: '111.02px',
                     textTransform: 'uppercase',
-                    letterSpacing: '20px'
+                    letterSpacing: '20px',
+                    wordWrap: 'break-word'
                 }}>
                     {this.props.missedGuesses}
                 </div>
