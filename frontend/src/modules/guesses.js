@@ -17,6 +17,14 @@ const GAME_STATE_ON = 'GAME_STATE_ON';
 const GAME_STATE_INITIALIZING = 'GAME_STATE_INITIALIZING';
 
 
+import winSound from './win1.wav';
+const winAudioPlayer = new Audio(winSound);
+winAudioPlayer.volume = 0.013;
+
+import loseSound from './lose1.wav';
+const loseAudioPlayer = new Audio(loseSound);
+loseAudioPlayer.volume = 0.02;
+
 /**
  * Async action creator. Dispatch start of fetching for new word. Fetches, and on success dispatches start new game action.
  */
@@ -41,6 +49,7 @@ const fetchNewWordAndDispatchNewWordAction = () => dispatch  => {
     );
 };
 
+
 const guessesReducer = (state = {textToGuess: [], lettersRowText: [], missedGuesses: [], gameState: GAME_STATE_INITIALIZING}, action) => {
     switch (action.type) {
         case 'newGuess':
@@ -55,6 +64,7 @@ const guessesReducer = (state = {textToGuess: [], lettersRowText: [], missedGues
 
             if (!action.guess.match(/^[A-Z]$/)) {
 
+                //in case user mistakenly tries a number or interpunction or some other non alphabet character
                 console.log('NOT AN ALPHABET LETTER');
                 return state;
 
@@ -79,15 +89,30 @@ const guessesReducer = (state = {textToGuess: [], lettersRowText: [], missedGues
 
                 const gameState = newLettersRowText.includes('') ? GAME_STATE_ON : GAME_STATE_OVER;
 
+                if (gameState === GAME_STATE_OVER) {winAudioPlayer.play();}
+
                 return Object.assign({}, state, {lettersRowText: newLettersRowText, gameState});
 
             } else {
 
                 console.log('MISS');
 
-                const gameState = state.missedGuesses.length === 10 ? GAME_STATE_OVER : GAME_STATE_ON;
+                const missedGuessesNext = [...state.missedGuesses, action.guess];
+                let gameStateNext = GAME_STATE_ON;
+                let lettersRowTextNext = state.lettersRowText;
 
-                return Object.assign({}, state, {missedGuesses: [...state.missedGuesses, action.guess], gameState});
+                // If 11 misses game is over (lost). Also unhide target text (answer).
+                if (missedGuessesNext.length === 11) {
+                    gameStateNext = GAME_STATE_OVER;
+                    lettersRowTextNext = Array(11-state.textToGuess.length).fill(undefined).concat(state.textToGuess);
+                    loseAudioPlayer.play();
+                }
+
+                return Object.assign({}, state, {
+                    missedGuesses: missedGuessesNext,
+                    gameState: gameStateNext,
+                    lettersRowText: lettersRowTextNext
+                });
             
             }
 
@@ -97,7 +122,7 @@ const guessesReducer = (state = {textToGuess: [], lettersRowText: [], missedGues
 
             // Fill hidden text on screen with undefined and ''.
             // undefined is used for light-gray not needed boxes,
-            // and '' for not guessable dark-gray boxes
+            // and '' for not guessable dark-gray boxes.
             const lettersRowText = 
                 Array(11-textToGuess.length).fill(undefined)
                     .concat(Array(textToGuess.length).fill(''));
