@@ -2,13 +2,13 @@ import {connect} from 'react-redux';
 
 import {Home} from './Home';
 
-import {fetchNewWordAndDispatchNewWordAction} from '../../modules/guesses';
+import {fetchNewWordAndDispatchNewWordAction, NEW_GUESS} from '../../modules/guesses';
 
 const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    newGuessHandler: (event) => {dispatch({type: 'newGuess', guess: event.key.toUpperCase()});},
+    newGuessHandler: (event) => {dispatch({type: NEW_GUESS, guess: event.key.toUpperCase()});},
     fetchNewWordAndDispatchNewWordAction: () => {dispatch(fetchNewWordAndDispatchNewWordAction());}
 });
 
